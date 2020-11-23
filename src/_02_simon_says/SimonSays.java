@@ -37,6 +37,9 @@ public class SimonSays extends KeyAdapter {
 	JFrame window;
 
 	public void run() {
+		
+		//timeAtStart = new Date();
+		
 		// 2. Add the four images that match keyboard keys like this:
 		// images.put(KeyEvent.VK_UP, "up.jpg");
 		images.put(KeyEvent.VK_UP, "up.jpg");
@@ -49,6 +52,13 @@ public class SimonSays extends KeyAdapter {
 		JOptionPane.showMessageDialog(null, "Press the matching key when 'Simon says' otherwise press a different key");
 		// 4. Call the showImage method to show an image
 		showImage();
+		
+//	Date timeAtEnd = new Date();
+		
+	//	System.out.println((timeAtEnd.getTime()-timeAtStart.getTime())/1000);
+		
+	//	System.exit(0);
+		
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -130,6 +140,10 @@ public class SimonSays extends KeyAdapter {
 
 		// 14. Above, set the value of simonSays to true/false appropriately
 
+		
+
+		
+		
 	}
 
 	private Component getNextRandomImage() {
@@ -161,6 +175,7 @@ public class SimonSays extends KeyAdapter {
 			}
 		}
 	}
+
 
 }
 
