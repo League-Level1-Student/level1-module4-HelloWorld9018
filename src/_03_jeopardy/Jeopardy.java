@@ -15,6 +15,9 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 
 
@@ -28,18 +31,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+//import _03_jukebox.Song;
+//import javazoom.jl.player.advanced.AdvancedPlayer;
+
 
 /* Check out the Jeopardy Handout to see what the end result should look like: http://bit.ly/1bvnvd4 */
 
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
 	private int buttonCount = 0;
-	private AudioClip sound;
+//	private Song sound;
 
 
 
@@ -71,9 +77,21 @@ public class Jeopardy implements ActionListener {
 		secondButton = createButton("$400");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
+		
+		thirdButton = createButton("$600");
+		quizPanel.add(thirdButton);
+		
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
+		
+		fifthButton = createButton("$1000");
+		quizPanel.add(fifthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 		
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
@@ -116,20 +134,50 @@ public class Jeopardy implements ActionListener {
 			// Call the askQuestion() method
 			askQuestion("What was Mozart's first and middle name?", "Wolfgang Amadeus", 200);
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
+			
+			firstButton.setText("");
+			
 		}
 		// If the buttonPressed was the secondButton
 		else if (buttonPressed == secondButton) {
 			// Call the askQuestion() method with a harder question
-			askQuestion("hbffcjfcjlibh add question here", "hgbadfjfshb add answer here", 400);
+			askQuestion("How old was Beethoven when he published his first composition?", "12", 400);
+			
+			secondButton.setText("");
+			
+		}
+		
+		else if (buttonPressed == thirdButton) {
+			// Call the askQuestion() method with a harder question
+			askQuestion("What was Schubert's nickname translated to english?", "Little Mushroom", 600);
+			
+			thirdButton.setText("");
+			
+		}
+		
+		else if (buttonPressed == fourthButton) {
+			// Call the askQuestion() method with a harder question
+			askQuestion("What did Elgar write his main theme for his cello concerto on?", "Napkin", 800);
+			
+			fourthButton.setText("");
+			
+		}
+		
+		else if (buttonPressed == fifthButton) {
+			// Call the askQuestion() method with a harder question
+			askQuestion("Both Bach and Handel were blided by which occular surgeon?", "John Taylor", 1000);
+			
+			fifthButton.setText("");
+			
 		}
 		// Clear the text on the button that was pressed (set the button text to nothing)
-
+		
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		playJeopardyTheme();
+	//	playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
 		String answer = JOptionPane.showInputDialog(null, question);
 		
@@ -144,7 +192,7 @@ public class Jeopardy implements ActionListener {
 			// Pop up a message to tell the user they were correct
 			JOptionPane.showMessageDialog(null, "Correct!");
 			
-			sound.stop();
+	//		sound.stop();
 		}
 		// Otherwise
 		else {
@@ -154,7 +202,7 @@ public class Jeopardy implements ActionListener {
 			// Pop up a message to tell the user they were wrong and give them the correct answer
 			JOptionPane.showMessageDialog(null, "Incorrect! The correct answer was '" + correctAnswer + "'");
 			
-			sound.stop();
+		//	sound.stop();
 		}
 			
 		// Call the updateScore() method
@@ -162,13 +210,17 @@ public class Jeopardy implements ActionListener {
 	}
 
 	public void playJeopardyTheme() {
-		try {
+		/**try {
 			sound = JApplet.newAudioClip(getClass().getResource("jeopardy.wav"));
 			sound.play();
 			Thread.sleep(3400);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		*/
+	//	sound = new Song("jeopardy.wav");
+	//	sound.play();
+		
 	}
 
 	private Component makeScorePanel() {
@@ -210,3 +262,13 @@ public class Jeopardy implements ActionListener {
 		frame.pack();
 	}
 }
+
+
+
+
+
+
+
+
+
+
