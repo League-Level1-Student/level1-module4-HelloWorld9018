@@ -38,7 +38,7 @@ public class SimonSays extends KeyAdapter {
 
 	public void run() {
 		
-		//timeAtStart = new Date();
+		timeAtStart = new Date();
 		
 		// 2. Add the four images that match keyboard keys like this:
 		// images.put(KeyEvent.VK_UP, "up.jpg");
@@ -53,10 +53,7 @@ public class SimonSays extends KeyAdapter {
 		// 4. Call the showImage method to show an image
 		showImage();
 		
-//	Date timeAtEnd = new Date();
-		
-	//	System.out.println((timeAtEnd.getTime()-timeAtStart.getTime())/1000);
-		
+
 	//	System.exit(0);
 		
 	}
@@ -93,10 +90,15 @@ public class SimonSays extends KeyAdapter {
 		// 25. If tries is greater than 9 (or however many you want)...
 
 		if (tries > 3) {
+			
+			Date timeAtEnd = new Date();
+			int timer = (int) ((timeAtEnd.getTime()-timeAtStart.getTime())/1000);
 			// 26. Tell the user their score
-			JOptionPane.showMessageDialog(null, "Your score is " + score);
+			JOptionPane.showMessageDialog(null, "Your score is " + score + "\nYour time was: " + timer + " seconds");
 			// 27. Exit the program
 	
+				
+			
 			System.exit(0);
 
 		}
