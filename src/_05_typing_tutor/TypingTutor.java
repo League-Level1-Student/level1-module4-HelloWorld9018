@@ -92,7 +92,7 @@ public class TypingTutor implements KeyListener {
 		// TODO Auto-generated method stub
 		System.out.println(e);
 		
-		if (amount >= 20) {
+		if (amount >= 30) {
 			System.out.println("STOP");
 			showTypingSpeed(amount);
 			
