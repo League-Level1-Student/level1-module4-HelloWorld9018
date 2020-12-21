@@ -23,6 +23,12 @@ public class Calculator implements ActionListener {
 		double a = 0;
 		double b = 0;
 		
+		double c;
+		
+		JLabel equals = new JLabel();
+		
+		JFrame frame  = new JFrame();
+		
 	double add(double a, double b){
 		double c = a + b;
 		return c;
@@ -47,7 +53,7 @@ public class Calculator implements ActionListener {
 	
 	void makeButtons (){
 		
-		JFrame frame  = new JFrame();
+		frame.setTitle("   Calculator");
 		
 		frame.setVisible(true);
 		
@@ -62,10 +68,7 @@ public class Calculator implements ActionListener {
 		JPanel output = new JPanel();
 		
 		
-		
-		JLabel equals = new JLabel();
-		
-		equals.setText(" = ");
+		equals.setText(" =    " + c);
 		
 		
 		additionFunction.setText("+");
@@ -100,6 +103,8 @@ public class Calculator implements ActionListener {
 		box1.setText("");
 		box2.setText("");
 		
+		
+		
 	}
 
 	@Override
@@ -107,6 +112,7 @@ public class Calculator implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		String input1 = box1.getText();
+		
 		if (input1 .equals ("")) {
 			a = 0;
 		}
@@ -116,14 +122,13 @@ public class Calculator implements ActionListener {
 		
 
 		String input2 = box2.getText();
+		
 		if (input2 .equals ("")) {
 			b = 0;
 		}
 		else {
-			double b = Double.parseDouble(input2);
+			b = Double.parseDouble(input2);
 		}
-		
-		//////ALWAYS SETS B TO 0, MUST BE A LOGIC ERROR, MUST FIX!
 		
 		
 		System.out.println("" + a);
@@ -134,20 +139,40 @@ public class Calculator implements ActionListener {
 		
 		if (e.getSource() .equals(additionFunction)) {
 			System.out.println("add");
+			
+			c = add(a, b);
+			
+			equals.setText(" =    " + c);
+			
 		}
 		
 		else if (e.getSource() .equals(subtractionFunction)) {
 			System.out.println("subtract");
+			
+			c = subtract(a, b);
+			
+			equals.setText(" =    " + c);
+			
 		}
 		
 		else if (e.getSource() .equals(multiplicationFunction)) {
 			System.out.println("multiply");
+			
+			c = multiply(a, b);
+			
+			equals.setText(" =    " + c);
+			
 		}
 		
 		else if (e.getSource() .equals(divisionFunction)) {
 			System.out.println("divide");
+			
+			c  = divide(a, b);
+			
+			equals.setText(" =    " + c);
+			
 		}
-		
+		frame.pack();
 	}
 	
 }
