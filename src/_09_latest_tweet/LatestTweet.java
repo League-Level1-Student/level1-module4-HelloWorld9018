@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import twitter4j.Query;
@@ -18,15 +19,13 @@ import twitter4j.auth.AccessToken;
 public class LatestTweet implements ActionListener {
 
 	JTextField input = new JTextField(20);
-	
+	JTextArea tweet = new JTextArea();
+	JPanel panel  = new JPanel();
 	
 	void makeUserInterface(){
 		JFrame frame = new JFrame();
 		frame.setTitle("Twitter Finder");
 		frame.setVisible(true);
-		
-		JPanel panel  = new JPanel();
-		
 		
 		
 		JButton search = new JButton();
@@ -51,7 +50,10 @@ public class LatestTweet implements ActionListener {
 		
 		String results  = input.getText();
 		
-		getLatestTweet(results);
+		String resultsTwitter = getLatestTweet(results);
+		System.out.println(resultsTwitter);
+		
+		panel.add(tweet);
 	}
 	
 	
