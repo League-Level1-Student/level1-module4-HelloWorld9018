@@ -15,13 +15,25 @@ import javax.swing.JPanel;
 public class WhackaMole implements ActionListener {
 
 	JButton mole;
+	JButton button;
+	
+	
 	int missed = 0;
 	int scored = 0;
 	JFrame frame;
 	
 	Date timeAtStart = new Date();
 	
+	int tries = 0;
+	
+	
+	
 	void makeButtons(int randomNum) {
+		
+		System.out.println("Random number: " + randomNum);
+		
+		//tries = tries ++;
+		//System.out.println("Total attempts: " + tries);
 		
 		frame = new JFrame();
 		frame.setVisible(true);
@@ -37,12 +49,12 @@ public class WhackaMole implements ActionListener {
 
 		
 		for(int i = 0; i<9; i++) {
-			JButton button = new JButton();
+			button = new JButton();
 			panel1.add(button);
 			button.addActionListener(this);
 			//button.setPreferredSize(new Dimension(100, 50));
 			if (i == randomNum) {
-				mole = button;
+			//mole = button;
 				button.setText("mole");
 			}
 			
@@ -58,33 +70,64 @@ public class WhackaMole implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		String check = mole.getText();
-		if (check == "mole") {
-			scored = scored ++;
+		JButton pressed = (JButton) e.getSource();
+		
+		String check = pressed.getText();
+		if (check  .equals ("mole")) {
+			scored ++;
+			System.out.println("Scored: " + scored);
 		}
 		
 		else {
-			speak("miss");
-			missed = missed ++;
+			
+			missed ++;
+			System.out.println("Missed: " + missed);
+			
+			if (missed == 1) {
+				speak("miss");
+			}
+			
+			else if (missed == 2) {
+				speak("haha");
+			}
+			
+			else if (missed == 3) {
+				speak("Too bad!");
+			}
+			
+			else if (missed == 4) {
+				speak("Missed again");
+			}
+			
 		}
 		
-		int tries = missed + scored;
+		//tries = missed + scored;
+		//tries += tries;
+		tries++;
+		System.out.println("Total attempts:" + tries);
 		
-		if(tries >= 10) {
+		if(tries >= 10 || missed >= 5) {
 			
-			// does not run
+			if (missed >= 5) {
+				speak("You loose");
+			}
 			
 			endGame(timeAtStart ,scored);
 			
 			System.out.println("Game Finished");
+			
+			frame.dispose();
 		}
 		
-		frame.dispose();
-		
-		int ran = new Random().nextInt(9);	
-		System.out.println(ran);
-		makeButtons(ran);
-		
+		else {
+			
+			frame.dispose();
+			
+			int ran = new Random().nextInt(9);	
+			//System.out.println(ran);
+			makeButtons(ran);
+			
+		}
 		
 	}
 	
