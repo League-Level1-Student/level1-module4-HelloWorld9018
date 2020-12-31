@@ -53,35 +53,26 @@ public class AdvancedBinaryConverter implements ActionListener {
 		addObjectToPanel(convertButton, 1, 0, 2);
 		// 8. Create a new JLabel with the text "ASCII:"
 		JLabel label = new JLabel();
-		label.setText("ASCII");
-		
-		panel.add(asciiResult);  //This is step 10
-		
+		label.setText("ASCII: ");
 		// 9. Call the addObjectToPanel() method to add the new label to row 2, column 0
 		//    of the panel with a cellWidth of 1
 		addObjectToPanel(label, 2, 0, 1);
 		// 10. Add asciiResult to the panel next to JLabel from step 8.
-		
+		addObjectToPanel(asciiResult,2,1,1);
 		// 11. Create a new JLabel with the text "Decimal:"
 		JLabel label2 = new JLabel();
 		label2.setText("Decimal: ");
-		
-		panel.add(decimalResult);   //This is step 13
-		
 		// 12. Add the label from step 11. to row 3, column 0 of the panel
 		addObjectToPanel(label2, 3, 0, 1);
 		// 13. Add the decimalResult JTextField to the panel next to label from step 11.
-		
+		addObjectToPanel(decimalResult,3, 1, 1); 
 		// 14. Create a new JLabel with the text "Hexidecimal:"
 		JLabel label3 = new JLabel();
 		label3.setText("Hexidecimal: ");
-		
-		panel.add(hexResult);    // This is step 16
-		
 		// 15. Add the label from step 14. to row 4, column 0 of the panel
 		addObjectToPanel(label3, 4, 0, 1);
 		// 16. Add the hexResult JTextField to the panel next to the label from step 14.
-		
+		addObjectToPanel(hexResult, 4, 1, 1); 
 		// 17. Pack the frame
 		frame.pack();
 		
